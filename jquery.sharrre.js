@@ -277,7 +277,7 @@
               ga('send', 'social', 'facebook', 'unlike', targetUrl);
           });
           FB.Event.subscribe('message.send', function(targetUrl) {
-              ga('send', 'social', 'facebook', 'like', targetUrl);
+              ga('send', 'social', 'facebook', 'send', targetUrl);
           });
           //console.log('ok');
           clearInterval(fb);
