@@ -34,6 +34,11 @@
 
     }
   }
+
+  // google plus is returning short values already, it seems.
+  if(strpos($json['count'],'k') !== false) $json['count'] = (float)$json['count']*1000;
+  if(strpos($json['count'],'m') !== false) $json['count'] = (float)$json['count']*1000000;
+
   echo str_replace('\\/','/',json_encode($json));
   
   function parse($encUrl){
