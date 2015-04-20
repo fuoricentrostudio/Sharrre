@@ -511,8 +511,8 @@
     }
     else{ //template by defaults
       $(this.element).html(
-                            '<div class="box"><a class="count" href="#">' + total + '</a>' + 
-                            (this.options.title !== '' ? '<a class="share" href="#">' + this.options.title + '</a>' : '') +
+                            '<div class="box"><a class="count" href="javascript:void(0);">' + total + '</a>' + 
+                            (this.options.title !== '' ? '<a class="share" href="javascript:void(0);">' + this.options.title + '</a>' : '') +
                             '</div>'
                           );
     }
