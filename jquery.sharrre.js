@@ -107,7 +107,7 @@
     
     twitter: "https://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
     digg: "http://services.digg.com/2.0/story.getInfo?links={url}&type=javascript&callback=?",
-    delicious: 'http://feeds.delicious.com/v2/json/urlinfo/data?url={url}&callback=?',
+    delicious: 'https://api.del.icio.us/v2/json/urlinfo/data?url={url}&callback=?',
     //stumbleupon: "http://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}&format=jsonp&callback=?",
     stumbleupon: "",
     linkedin: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
@@ -274,13 +274,13 @@
       fb = window.setInterval(function(){
         if (typeof FB !== 'undefined') {
           FB.Event.subscribe('edge.create', function(targetUrl) {
-            _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+              ga('send', 'social', 'facebook', 'like', targetUrl);
           });
           FB.Event.subscribe('edge.remove', function(targetUrl) {
-            _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+              ga('send', 'social', 'facebook', 'unlike', targetUrl);
           });
           FB.Event.subscribe('message.send', function(targetUrl) {
-            _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+              ga('send', 'social', 'facebook', 'send', targetUrl);
           });
           //console.log('ok');
           clearInterval(fb);
@@ -293,7 +293,7 @@
         if (typeof twttr !== 'undefined') {
           twttr.events.bind('tweet', function(event) {
             if (event) {
-              _gaq.push(['_trackSocial', 'twitter', 'tweet']);
+                ga('send', 'social', 'twitter', 'tweet');
             }
           });
           //console.log('ok');
@@ -311,7 +311,7 @@
     stumbleupon: function(){},
     linkedin: function(){
       function LinkedInShare() {
-        _gaq.push(['_trackSocial', 'linkedin', 'share']);
+          ga('send', 'social', 'linkedin', 'share');
       }
     },
     pinterest: function(){
@@ -544,7 +544,7 @@
         linkedin: {site: 'linkedin', action: 'share'},
         pinterest: {site: 'pinterest', action: 'pin'}
       };
-      _gaq.push(['_trackSocial', tracking[site].site, tracking[site].action]);
+      ga('send', 'social', tracking[site].site, tracking[site].action);
     }
   };
   
